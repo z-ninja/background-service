@@ -15,7 +15,7 @@ public:
     ~ServiceManager();
     bool open(DWORD dwDesiredAccess = SC_MANAGER_ALL_ACCESS);
     bool install(Service&);
-    bool install(Service&,std::vector<std::string>);
+    bool install(Service&,std::vector<std::string>&);
     bool uninstall(Service&);
     bool status(Service&);
     bool start(Service&);
