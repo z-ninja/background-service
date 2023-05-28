@@ -109,7 +109,7 @@ bool ServiceManager::install(Service&svc)
     std::vector<std::string>args;
     return install(svc,args);
 }
-bool ServiceManager::install(Service&svc,std::vector<std::string>args)
+bool ServiceManager::install(Service&svc,std::vector<std::string>&args)
 {
 
     SC_HANDLE schService;
