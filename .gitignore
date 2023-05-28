@@ -1,0 +1,7 @@
+#codeblocks project
+obj/
+bin/
+*.layout
+*.depend
+*.cbp
+tests/
