@@ -27,7 +27,7 @@ private:
     SC_HANDLE schSCManager{nullptr};
 
 };
-} /// bre
+} /// win
 } /// bre
 
 #endif // SERVICEMANAGER_H
