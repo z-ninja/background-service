@@ -4,4 +4,4 @@ bin/
 *.layout
 *.depend
 *.cbp
-tests/
+local-tests/
