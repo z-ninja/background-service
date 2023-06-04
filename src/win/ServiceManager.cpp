@@ -62,7 +62,7 @@ bool ServiceManager::close()
     }
     return ret;
 }
-bool ServiceManager::open(DWORD dwDesiredAccess)
+bool ServiceManager::open(platform::OS_SPECIFIC_INTEGER_TYPE dwDesiredAccess)
 {
     if(schSCManager)
     {

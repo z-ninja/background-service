@@ -42,7 +42,7 @@ int main(int argc,char*argv[])
 
         if(arg.compare("service") == 0)
         {
-            if(!svc.run([&]()->DWORD
+            if(!svc.run([&]()->bre::platform::OS_SPECIFIC_INTEGER_TYPE
         {
 
             /// service main task execution

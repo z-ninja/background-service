@@ -123,7 +123,7 @@ bool Service::stop()
     }
     return true;
 }
-bool Service::run(std::function<DWORD()>&& cb,std::function<void()>&& cb_on_stop_request)
+bool Service::run(std::function<platform::OS_SPECIFIC_INTEGER_TYPE()>&& cb,std::function<void()>&& cb_on_stop_request)
 {
     m_cb = cb;
     m_cb_on_stop_request = cb_on_stop_request;

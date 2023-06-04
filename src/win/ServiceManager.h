@@ -3,17 +3,22 @@
 #include <windows.h>
 #include <vector>
 #include <string>
+
 namespace bre
 {
+namespace platform {
+using OS_SPECIFIC_INTEGER_TYPE = DWORD;
+}
 namespace win
 {
+
 class Service;
 class ServiceManager
 {
 public:
     ServiceManager();
     ~ServiceManager();
-    bool open(DWORD dwDesiredAccess = SC_MANAGER_ALL_ACCESS);
+    bool open(platform::OS_SPECIFIC_INTEGER_TYPE dwDesiredAccess = SC_MANAGER_ALL_ACCESS);
     bool install(Service&);
     bool install(Service&,std::vector<std::string>&);
     bool uninstall(Service&);

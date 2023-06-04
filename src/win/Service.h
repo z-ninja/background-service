@@ -10,15 +10,15 @@ namespace win
 struct ServiceInfo
 {
     std::string m_name{};
-    DWORD      m_DesiredAccess{SERVICE_ALL_ACCESS};
-    DWORD      m_ServiceType{SERVICE_WIN32_OWN_PROCESS};
-    DWORD      m_StartType{SERVICE_AUTO_START};
-    DWORD      m_ErrorControl{SERVICE_ERROR_NORMAL};
+    platform::OS_SPECIFIC_INTEGER_TYPE      m_DesiredAccess{SERVICE_ALL_ACCESS};
+    platform::OS_SPECIFIC_INTEGER_TYPE      m_ServiceType{SERVICE_WIN32_OWN_PROCESS};
+    platform::OS_SPECIFIC_INTEGER_TYPE      m_StartType{SERVICE_AUTO_START};
+    platform::OS_SPECIFIC_INTEGER_TYPE      m_ErrorControl{SERVICE_ERROR_NORMAL};
     const char*m_LoadOrderGroup{nullptr};
     const char*m_Dependencies{nullptr};
     const char*m_ServiceStartName{nullptr};
     const char*m_Password{nullptr};
-    DWORD      m_TagId{0};
+    platform::OS_SPECIFIC_INTEGER_TYPE      m_TagId{0};
 };
 
 class Service
@@ -43,12 +43,13 @@ public:
     {
         return m_ss;
     }
-    bool run(std::function<DWORD()>&&,std::function<void()>&&);
-    static DWORD WINAPI ServiceCtrlHandler (DWORD dwControl,DWORD dwEventType,LPVOID lpEventData,LPVOID lpContext);
-    static VOID WINAPI ServiceMain (DWORD argc, char *argv[]);
+    bool run(std::function<platform::OS_SPECIFIC_INTEGER_TYPE()>&&,std::function<void()>&&);
+
 protected:
 
 private:
+    static DWORD WINAPI ServiceCtrlHandler (DWORD dwControl,DWORD dwEventType,LPVOID lpEventData,LPVOID lpContext);
+    static VOID WINAPI ServiceMain (DWORD argc, char *argv[]);
     bool svcMain(DWORD argc,char* argv[]);
     bool stop();
     friend ServiceManager;
@@ -56,7 +57,7 @@ private:
     SERVICE_STATUS_PROCESS m_ssp;
     SERVICE_STATUS m_ss;
     SERVICE_STATUS_HANDLE m_handle;
-    std::function<DWORD()> m_cb;
+    std::function<platform::OS_SPECIFIC_INTEGER_TYPE()> m_cb;
     std::function<void()> m_cb_on_stop_request;
 };
 } /// win
